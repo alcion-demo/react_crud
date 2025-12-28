@@ -15,7 +15,7 @@
 <img alt="Static Badge" src="https://img.shields.io/badge/TypeScript-%20?style=plastic&logo=typescript&logoColor=%233178C6&labelColor=%23ffffff&color=%23ffffff">  
 <img alt="Static Badge" src="https://img.shields.io/badge/vite-v?style=plastic&logo=vite&logoColor=%23ffffff&labelColor=%23646CFF&color=%23646CFF">
 <img alt="Static Badge" src="https://img.shields.io/badge/React-%20?style=plastic&logo=react&logoColor=%23000000&labelColor=%2361DAFB&color=%2361DAFB">
-<img alt="Static Badge" src="https://img.shields.io/badge/-Ziggy?style=plastic&logo=Ziggy&label=Ziggy&labelColor=c1c1c1&color=c1c1c1">
+<img alt="Static Badge" src="https://img.shields.io/badge/-fotify?style=plastic&logo=fotify&label=fotify&labelColor=c1c1c1&color=c1c1c1">
 
 
 ## 概要  
@@ -25,7 +25,7 @@
 - Inertia設定  
 - nodeコンテナ別作成  
 
-#### [環境手順はこちら](https://github.com/Demo-YH/Document/blob/master/laravel12_react.md)  
+#### [環境手順はこちら](https://github.com/Demo-YH/Document/blob/master/laravel12_react_v1.md)  
 
 ## 参考  
 #### [参考サイト:環境構築](https://qiita.com/daki/items/6a6a75a677c7bc583d38)  
