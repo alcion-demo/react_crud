@@ -13,17 +13,17 @@ export default defineConfig({
         react(),
         tailwindcss(),
     ],
-      resolve: {
+    resolve: {
         alias: {
             '@': path.resolve(__dirname, 'resources/ts'),
         },
-        },
-        server: {
+    },
+    server: {
         host: true,
         port: 5173,
         strictPort: true,
         hmr: {
-        host: 'localhost',
+            host: 'localhost',
         },
         watch: {
             ignored: ['**/storage/framework/views/**'],

@@ -1,70 +1,78 @@
-import { FormEvent } from 'react'
-import { useForm, Link } from '@inertiajs/react'
+import { FormEvent } from "react";
+import { useForm, Link } from "@inertiajs/react";
 
 export default function Login() {
-// data = フォームの中身（state）
-// setData = 入力に応じて更新
-// post = data を送信
-// processing = 送信中フラグ
-// errors = Laravel からのエラー
-  const { data, setData, post, processing, errors } = useForm({
-    email: '',
-    password: '',
-  })
+    const { data, setData, post, processing, errors } = useForm({
+        email: "",
+        password: "",
+    });
 
-  const submit = (e: FormEvent) => {
-    e.preventDefault()
-    post('/auth/login')
-  }
+    const submit = (e: FormEvent) => {
+        e.preventDefault();
+        post("/auth/login");
+    };
 
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md">
-        {/* タイトル枠 */}
-        <div className="bg-gray-200 text-gray-700 font-semibold p-3 rounded-t-lg text-left">
-          Login
-        </div>
+    return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+            <div className="w-full max-w-md">
+                {/* タイトル枠 */}
+                <div className="bg-gray-200 text-gray-700 font-semibold p-3 rounded-t-lg text-left">
+                    Login
+                </div>
 
-        {/* カード本体 */}
-        <div className="bg-white shadow-lg rounded-b-lg p-6 flex flex-col gap-4">
-          <form onSubmit={submit} className="flex flex-col gap-4">
-            <input
-              type="email"
-              placeholder="Email"
-              className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              value={data.email}
-              onChange={e => setData('email', e.target.value)}
-            />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                {/* カード本体 */}
+                <div className="bg-white shadow-lg rounded-b-lg p-6 flex flex-col gap-4">
+                    <form onSubmit={submit} className="flex flex-col gap-4">
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            value={data.email}
+                            onChange={(e) => setData("email", e.target.value)}
+                        />
+                        {errors.email && (
+                            <p className="text-red-500 text-sm">
+                                {errors.email}
+                            </p>
+                        )}
 
-            <input
-              type="password"
-              placeholder="Password"
-              className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              value={data.password}
-              onChange={e => setData('password', e.target.value)}
-            />
-            {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            value={data.password}
+                            onChange={(e) =>
+                                setData("password", e.target.value)
+                            }
+                        />
+                        {errors.password && (
+                            <p className="text-red-500 text-sm">
+                                {errors.password}
+                            </p>
+                        )}
 
-            <div className="flex justify-start">
-              <button
-                type="submit"
-                disabled={processing}
-                className="bg-blue-500 text-white rounded-lg px-3 py-2 font-semibold hover:bg-blue-600 transition"
-              >
-                Login
-              </button>
+                        <div className="flex justify-start">
+                            <button
+                                type="submit"
+                                disabled={processing}
+                                className="bg-blue-500 text-white rounded-lg px-3 py-2 font-semibold hover:bg-blue-600 transition"
+                            >
+                                Login
+                            </button>
+                        </div>
+                    </form>
+
+                    <p className="mt-4 text-center text-sm text-gray-600">
+                        まだアカウントをお持ちでない方は{" "}
+                        <Link
+                            href="/auth/register"
+                            className="text-blue-500 hover:underline"
+                        >
+                            登録
+                        </Link>
+                    </p>
+                </div>
             </div>
-          </form>
-
-          <p className="mt-4 text-center text-sm text-gray-600">
-            まだアカウントをお持ちでない方は{' '}
-            <Link href="/auth/register" className="text-blue-500 hover:underline">
-              登録
-            </Link>
-          </p>
         </div>
-      </div>
-    </div>
-  )
+    );
 }
