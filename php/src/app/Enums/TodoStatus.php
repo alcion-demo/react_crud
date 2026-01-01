@@ -16,7 +16,7 @@ enum TodoStatus: int
      */
     public function label(): string
     {
-        return match $this) {
+        return match ($this) {
             self::Pending => '未着手',
             self::InProgress => '処理中',
             self::Completed => '完了',
