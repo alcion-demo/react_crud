@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Todo;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use Inertia\Inertia;
 use App\Enums\TodoStatus;
 use App\Enums\TodoPriority;
-use App\Http\Requests\StoreTodoRequest;
-use App\Http\Requests\UpdateTodoRequest;
+use App\Http\Requests\Todo\StoreTodoRequest;
+use App\Http\Requests\Todo\UpdateTodoRequest;
 use App\Services\TodoService;
 
 use Illuminate\Support\Facades\{
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\{
 
 class TodoController extends Controller
 {
+    private TodoService $todoService;
     /**
      * __construct
      */
@@ -83,7 +85,8 @@ class TodoController extends Controller
 
     /**
      * 詳細画面を表示する
-     * @returnnview
+     * @param $id
+     * @return view
      */
     public function show(string $id)
     {

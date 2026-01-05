@@ -1,71 +1,108 @@
-# Laravel+React  
-## 環境  
+# Todo アプリケーション（Laravel 12 + Inertia + React/TypeScript）
+
+<p align="left">
 <img alt="Static Badge" src="https://img.shields.io/badge/wsl2-w?style=plastic&logo=linux&logoColor=000000&labelColor=%23FCC624&color=%23FCC624"> <img alt="Static Badge" src="https://img.shields.io/badge/ubuntu-u?style=plastic&logo=ubuntu&logoColor=%23ffffff&labelColor=%23E95420&color=%23E95420">
-<img alt="Static Badge" src="https://img.shields.io/badge/alpine-l?style=plastic&logo=alpinelinux&logoColor=%23ffffff&labelColor=%230D597F&color=%230D597F">  
+<img alt="Static Badge" src="https://img.shields.io/badge/alpine-l?style=plastic&logo=alpinelinux&logoColor=%23ffffff&labelColor=%230D597F&color=%230D597F">
 <img alt="Static Badge" src="https://img.shields.io/badge/Docker-d?style=plastic&logo=docker&logoColor=%23ffffff&labelColor=%232496ED&color=%232496ED">
-<img alt="Static Badge" src="https://img.shields.io/badge/Laravel12-l?style=plastic&logo=laravel&logoColor=%23ffffff&labelColor=%23FF2D20&color=%23FF2D20"> 
-<img alt="Static Badge" src="https://img.shields.io/badge/NGINX-n?style=plastic&logo=nginx&logoColor=%23ffffff">
-<img alt="Static Badge" src="https://img.shields.io/badge/MySQL-m?style=plastic&logo=mysql&logoColor=%23ffffff&labelColor=%234479A1&color=%234479A1">
-<img alt="Static Badge" src="https://img.shields.io/badge/php-p?style=plastic&logo=php&logoColor=%23ffffff&labelColor=%23777BB4&color=%23777BB4">  
-<img alt="Static Badge" src="https://img.shields.io/badge/bootstrap-b?style=plastic&logo=bootstrap&logoColor=%23ffffff&labelColor=%237952B3&color=%237952B3">
-<img alt="Static Badge" src="https://img.shields.io/badge/tailwind-%20?style=plastic&logo=tailwindcss&logoColor=ffffff&color=%2306B6D4">
-<img alt="Static Badge" src="https://img.shields.io/badge/npm-n?style=plastic&logo=npm&logoColor=%23ffffff&labelColor=%23CB3837&color=%23CB3837">  
+<img alt="Static Badge" src="https://img.shields.io/badge/Laravel12-l?style=plastic&logo=laravel&logoColor=%23ffffff&labelColor=%23FF2D20&color=%23FF2D20">
 <img alt="Static Badge" src="https://img.shields.io/badge/Inertia.js-%20?style=plastic&logo=Inertia&logoColor=FFFFFF&labelColor=%239553E9&color=%239553E9">
-<img alt="Static Badge" src="https://img.shields.io/badge/JavaScript-%20?style=plastic&logo=javascript&logoColor=%23F7DF1E&labelColor=%23ffffff&color=%23ffffff">
-<img alt="Static Badge" src="https://img.shields.io/badge/TypeScript-%20?style=plastic&logo=typescript&logoColor=%233178C6&labelColor=%23ffffff&color=%23ffffff">  
-<img alt="Static Badge" src="https://img.shields.io/badge/vite-v?style=plastic&logo=vite&logoColor=%23ffffff&labelColor=%23646CFF&color=%23646CFF">
 <img alt="Static Badge" src="https://img.shields.io/badge/React-%20?style=plastic&logo=react&logoColor=%23000000&labelColor=%2361DAFB&color=%2361DAFB">
-<img alt="Static Badge" src="https://img.shields.io/badge/-fotify?style=plastic&logo=fotify&label=fotify&labelColor=c1c1c1&color=c1c1c1">
+<img alt="Static Badge" src="https://img.shields.io/badge/TypeScript-%20?style=plastic&logo=typescript&logoColor=%233178C6&labelColor=%23ffffff&color=%23ffffff">
+<img alt="Static Badge" src="https://img.shields.io/badge/-fortify?style=plastic&logo=fortify&label=fortify&labelColor=c1c1c1&color=c1c1c1">
+</p>
+
+## プロジェクト概要
+本リポジトリは、WSL2上のDocker環境において、**Backend(PHP)とFrontend(Node.js)を独立したコンテナとして稼働**させたフルスタック・アプリケーションです。
+
+Inertia.jsを採用することで、サーバーサイドでのルーティング制御とReactによるSPAの操作性を両立させています。
+
+## このアプリケーションの目的
+本アプリケーションは、**「Laravelをバックエンドとしつつ、フロントエンドにReactをどのように最適に組み込むか」**を学習・検証することを主目的としています。特に以下の点を重視した設計を行っています。
+Todo の編集・状態管理は React 主導になるため、詳細表示までを対象としています。
+
+- **脱Blade構成**: Inertia.jsを用いてLaravelとReactを密結合させ、モダンな開発フローを実現。
+- **責務の分離**: Controller / Service / Frontend 間での明確な責務分離と効率的なデータ受け渡し。
+- **フレームワークの活用**: Laravelの強力な認証（Fortify）・ルーティングを活かしつつ、フロントエンドをReactで構築。
+- **型安全性の担保**: React + TypeScript による、ランタイムエラーを抑制する堅牢なフロントエンド実装。
 
 
-## 概要  
-#### Laravel12で下記環境を構築しています。
-- HMR  
-- Vite(TypeScript)  
-- Inertia設定  
-- nodeコンテナ別作成  
+*※Todo管理やカレンダー表示機能は、これらのアーキテクチャを実践的に検証するための題材として実装しています。*
 
-#### [環境手順はこちら](https://github.com/Demo-YH/Document/blob/master/laravel12_react_v1.md)  
+## 使用技術
+| カテゴリ | 使用技術 |
+| :--- | :--- |
+| **Backend** | Laravel 12, Fortify, PHP_CodeSniffer, Debugbar |
+| **Frontend** | React, TypeScript, Inertia.js, Vite, Tailwind CSS |
+| **Infrastructure** | Docker Compose (App / Node / MySQL / Nginx) |
+| **OS Environment** | WSL2 (Ubuntu / Alpine Linux) |
+| **Database** | MySQL 8.x |
 
-## 参考  
-#### [参考サイト:環境構築](https://qiita.com/daki/items/6a6a75a677c7bc583d38)  
-#### [参考サイト:React](https://reffect.co.jp/laravel/laravel_inertia_js_react#i-7)
+## 主な機能
+- **ユーザー認証**: Laravel Fortifyを用いたセキュアな認証基盤。
+- **Todo管理**: 作成 / 編集 / 削除の基本CRUD機能。
+- **カレンダー連携**: 締切日でグルーピングしたカレンダー表示（`CreateCalendarService`による実装）。
+- **シームレスな遷移**: APIとInertiaを使ったシングルページアプリケーション体験。
 
-## 備考
-#### 個人学習目的なのでコメントもそれに付随したものとなっています。  
-#### 独学なので内容・動作の保証は不可、あくまで個人学習の範囲で試行錯誤したものとなっています。  
+## マルチコンテナ分離構成 (Separation of Concerns)
+各サービスの責務を分離したコンテナ管理を行っています。
+- **App Container (PHP-FPM/Alpine)**: ビジネスロジックおよびサーバーサイド処理を担当。
+- **Node Container (Vite)**: フロントエンドのビルドおよびホットリロードを担当。
+- **DB Container (MySQL)**: データの永続化を担当。
 
-## 所感  
-#### 変更をかけずに長期的に使える構成の検討は難しい
-#### 必要なファイルと書き換える構成はなんとなく理解した。
-#### 分けるものらしいけど、Larvelの中で共存しないとで辛い…
-#### 本番環境では使えないとか…
-#### 今回下記を初めて使用したコマンド少しだけ知識が増えた…今更だが便利！
-```
-php artisan tinker
-```
-#### ※今まで下記かlog直接見るを実施  
-#### ※特にvar_dumpの使用を推奨された↓  
-```
-\Log::debug($test);
-var_dump();
-dd();
-```
-#### 実務使用経験あり  
-```
-tail -f
+## 主要ディレクトリ構成
+
+本プロジェクトでは、メンテナンス性と拡張性を考慮し、以下のディレクトリ構成に重点を置いて設計しています。
+
+- **`app/Services/`** : **[最重要] ビジネスロジックの集約**
+  - `CreateCalendarService.php`: カレンダー生成ロジック。
+  - `TodoService.php`: Todo操作（CRUD）の集約。
+  - *意図: Controllerからロジックを分離し、単体テストの容易性とコードの再利用性を高めています。*
+
+- **`app/Actions/Fortify/`** : **認証ロジックのカスタマイズ**
+  - Fortifyを利用したヘッドレス認証の具体的な振る舞いを定義。
+  - *意図: 標準の認証機能を実務要件に合わせて柔軟に拡張しています。*
+
+- **`resources/ts/`** : **フロントエンド資産（React/TypeScript）**
+  - `Components/`: 再利用可能なUI部品。
+  - `Pages/`: Inertia.jsを介してレンダリングされる各ページビュー。
+  - `types/`: TypeScriptによる型定義ファイル。
+  - *意図: フロントエンドの型安全性を担保し、大規模開発に耐えうる構成にしています。*
+
+- **`lang/ja/`** : **ローカライズ（日本語化）対応**
+  - バリデーションメッセージ、認証エラー等の日本語化定義。
+  - *意図: ユーザー体験（UX）を向上させるための細かな調整を徹底しています。*
+
+## 設計方針
+- **シンプルさと責務分離（SRP）**: ビジネスロジックを `app/Services` に集約し、  
+コントローラは入力の受け取りとレスポンス返却に集中。これによりテスト容易性と保守性を向上させています。
+- **型と安全性**: フロントエンドにTypeScriptを導入し、ランタイムでのバグ抑制を重視。
+- **再利用性**: `TodoService`に処理をまとめ、将来的なAPI利用や別UIからの再利用を想定。
+- **ユーザビリティ**: Inertia.jsにより、サーバーサイドの堅牢さを保ちつつ滑らかな画面遷移を実現。
+
+## セットアップ手順
+
+### 1. インフラのビルドと起動
+```bash
+docker compose build
+docker compose up -d
 ```
 
-#### curlは存在は知っているが、コーディング中に使用初、実務では仕様調査の為に使用したのみ
-| Command | Description |
-| --- | --- |
-| curl http\://localhost:xxxx | SSRサーバーが応答するか確認 |
-| curl -X POST http\://localhost:xxxx/render -d '{"url":"/"}' | SSR出力を確認 |
-  
-#### サーバー設定でお世話になった方々
+### 2. バックエンドの初期化
 ```
-cat .env | grep VITE
-ss -ltnp | grep
-docker compose logs -f node
-php artisan inertia:check-ssr
+docker compose exec app ash
+composer install
+php artisan migrate
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
 ```
+### 3. フロントエンドの起動
+```
+docker compose exec node sh
+npm install
+npm run dev
+``` 
+
+## 今後の改善予定
+
+- カレンダー UI の改善
+- Service 層のテスト拡充

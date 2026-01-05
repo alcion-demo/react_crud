@@ -35,9 +35,6 @@ export default function Create({ statuses, priorities, defaults }: PageProps) {
             {/* ヘッダー帯 */}
             <div className="border-b bg-gray-50 px-8 py-4 flex justify-between items-center">
                 <h1 className="text-lg font-semibold">Todo 作成</h1>
-                <Link href="/todos" className="text-blue-600 hover:underline">
-                    一覧へ戻る
-                </Link>
             </div>
 
             {/* フォーム */}

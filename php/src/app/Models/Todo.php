@@ -46,15 +46,16 @@ class Todo extends Model
      * @param $request
      * @return array
      */
-    public function storeTodoList($request){
+    public function storeTodoList($request)
+    {
         $todo = $this->create([
-        'title' => $request->title,
-        'detail' => $request->detail,
-        'status' => $request['status'],
-        'priority' => $request['priority'],
-        'deadline' => $request['deadline'],
-        'user_id' => auth()->id(),
-    ]);
+            'title' => $request->title,
+            'detail' => $request->detail,
+            'status' => $request['status'],
+            'priority' => $request['priority'],
+            'deadline' => $request['deadline'],
+            'user_id' => auth()->id(),
+        ]);
 
         return $todo;
     }
@@ -70,7 +71,8 @@ class Todo extends Model
      * @param $request
      * @return array
      */
-    public function updateTodoList($request){
+    public function updateTodoList($request)
+    {
         $this->update([
             'title' => $request['title'],
             'detail' => $request['detail'],
@@ -79,5 +81,20 @@ class Todo extends Model
             'deadline' => $request['deadline'],
             'user_id' => auth()->id(),
         ]);
+    }
+
+    /**
+     * 指定した年月の Todo を取得するためのクエリスコープ
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param int $year  対象年
+     * @param int $month 対象月
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeMonthly($query, int $year, int $month)
+    {
+        return $query
+            ->whereYear('deadline', $year)
+            ->whereMonth('deadline', $month);
     }
 }

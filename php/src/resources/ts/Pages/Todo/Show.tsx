@@ -66,12 +66,12 @@ export default function Show() {
 
                     {/* フッター */}
                     <div className="border-t px-6 py-4 flex justify-end">
-                        <Link
-                            href="/todos"
-                            className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300"
+                        <button
+                            onClick={() => history.back()} 
+                            className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
                         >
                             戻る
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
