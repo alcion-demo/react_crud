@@ -122,7 +122,7 @@ export default function Index() {
                   return (
                     <div
                       key={dayIndex}
-                      className={`w-36 min-h-[110px] p-2 border border-gray-200 text-left
+                      className={`w-36 min-h-[110px] rounded-lg p-2 border border-gray-200 text-left
                         ${calendarDay.date === todayStr ? "bg-yellow-50" : ""}
                         ${isFirstWeek && isFirstCol ? "rounded-tl-xl" : ""}
                         ${isFirstWeek && isLastCol ? "rounded-tr-xl" : ""}
