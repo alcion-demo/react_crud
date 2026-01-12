@@ -64,6 +64,35 @@
   - `types/`: 型定義  
 - **`lang/ja/`** : 日本語化（バリデーション・認証エラーなど）
 
+## アーキテクチャ構成図
+
+このリポジトリは、Laravelを基盤としたモダンなフルスタック構成の実験場です。
+
+```mermaid
+graph LR
+    subgraph Client ["フロントエンド (Browser)"]
+        React["React + TypeScript"]
+        Vite["Vite (ビルドツール)"]
+    end
+
+    subgraph Bridge ["架け橋"]
+        Inertia["Inertia.js"]
+    end
+
+    subgraph Server ["バックエンド (Server)"]
+        Laravel["Laravel 12+"]
+        Fortify["Fortify (認証ロジック)"]
+    end
+
+    DB[(Database)]
+
+    React <--> Inertia
+    Inertia <--> Laravel
+    Laravel <--> Fortify
+    Laravel <--> DB
+    Vite -.-> React
+```
+
 ## セットアップ手順
 
 ### 1. インフラのビルドと起動
