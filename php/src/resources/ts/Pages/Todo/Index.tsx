@@ -35,6 +35,14 @@ export default function Index() {
     return (
         <AppLayout>
             <div className="max-w-5xl px-8 mt-6">
+                <div className="mb-2">
+                    <Link
+                        href="/dashboard"
+                        className="text-sm text-gray-600 hover:underline"
+                    >
+                        ← Dashboardに戻る
+                    </Link>
+                </div>
                 {/* タイトル + ボタン */}
                 <div className="flex justify-between items-center mb-2">
                     <h1 className="text-xl font-bold">Todo一覧</h1>
@@ -69,7 +77,11 @@ export default function Index() {
                             <div>
                                 {new Date(todo.deadline).toLocaleDateString()}
                             </div>
-                            <div>{getStatusLabel(todo.status)}</div>
+                            <div>
+                                <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusClass(todo.status)}`}
+>                                    {getStatusLabel(todo.status)}
+                                </span>
+                            </div>
                             <div>{todo.priority_label}</div>
                             <div className="flex items-center gap-2 whitespace-nowrap">
                                 <Link

@@ -33,10 +33,10 @@ export default function Dashboard() {
 
                     <li>
                         <Link
-                            href="/todos/create"
+                            href="/calendars"
                             className="block rounded border px-4 py-3 hover:bg-gray-50"
                         >
-                            仮項目
+                            カレンダー
                         </Link>
                     </li>
                 </ul>

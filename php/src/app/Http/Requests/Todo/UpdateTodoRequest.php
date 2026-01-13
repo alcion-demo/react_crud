@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Todo;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTodoRequest extends FormRequest
+class UpdateTodoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class StoreTodoRequest extends FormRequest
             'detail' => 'required|max:300',
             'status' => 'required|integer',
             'priority' => 'required|integer',
-            'deadline' => 'required|date|after_or_equal:today',
+            'deadline' => 'required|date',
         ];
     }
 
@@ -53,7 +53,6 @@ class StoreTodoRequest extends FormRequest
     public function messages()
     {
         return [
-            'deadline.after_or_equal' => ':attribute には今日以降の日付を入力してください。',
         ];
     }
 }

@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\Todo;
 use App\Models\User;
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\Todo\TodoController;
+use App\Http\Controllers\Calendar\CalendarController;
 
 // ログイン済みならダッシュボード
 Route::get('/', function () {
@@ -20,6 +21,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
+
 });
 
 Route::post('/auth/logout', function () {
@@ -31,4 +33,5 @@ Route::post('/auth/logout', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('todos', TodoController::class);
+    Route::resource('calendars', CalendarController::class)->only(['index']);
 });

@@ -1,71 +1,123 @@
-# Laravel+React  
-## 環境  
+# Todo アプリケーション（Laravel 12 + Inertia + React/TypeScript）
+
+<p align="left">
 <img alt="Static Badge" src="https://img.shields.io/badge/wsl2-w?style=plastic&logo=linux&logoColor=000000&labelColor=%23FCC624&color=%23FCC624"> <img alt="Static Badge" src="https://img.shields.io/badge/ubuntu-u?style=plastic&logo=ubuntu&logoColor=%23ffffff&labelColor=%23E95420&color=%23E95420">
-<img alt="Static Badge" src="https://img.shields.io/badge/alpine-l?style=plastic&logo=alpinelinux&logoColor=%23ffffff&labelColor=%230D597F&color=%230D597F">  
+<img alt="Static Badge" src="https://img.shields.io/badge/alpine-l?style=plastic&logo=alpinelinux&logoColor=%23ffffff&labelColor=%230D597F&color=%230D597F">
 <img alt="Static Badge" src="https://img.shields.io/badge/Docker-d?style=plastic&logo=docker&logoColor=%23ffffff&labelColor=%232496ED&color=%232496ED">
-<img alt="Static Badge" src="https://img.shields.io/badge/Laravel12-l?style=plastic&logo=laravel&logoColor=%23ffffff&labelColor=%23FF2D20&color=%23FF2D20"> 
-<img alt="Static Badge" src="https://img.shields.io/badge/NGINX-n?style=plastic&logo=nginx&logoColor=%23ffffff">
-<img alt="Static Badge" src="https://img.shields.io/badge/MySQL-m?style=plastic&logo=mysql&logoColor=%23ffffff&labelColor=%234479A1&color=%234479A1">
-<img alt="Static Badge" src="https://img.shields.io/badge/php-p?style=plastic&logo=php&logoColor=%23ffffff&labelColor=%23777BB4&color=%23777BB4">  
-<img alt="Static Badge" src="https://img.shields.io/badge/bootstrap-b?style=plastic&logo=bootstrap&logoColor=%23ffffff&labelColor=%237952B3&color=%237952B3">
-<img alt="Static Badge" src="https://img.shields.io/badge/tailwind-%20?style=plastic&logo=tailwindcss&logoColor=ffffff&color=%2306B6D4">
-<img alt="Static Badge" src="https://img.shields.io/badge/npm-n?style=plastic&logo=npm&logoColor=%23ffffff&labelColor=%23CB3837&color=%23CB3837">  
+<img alt="Static Badge" src="https://img.shields.io/badge/Laravel12-l?style=plastic&logo=laravel&logoColor=%23ffffff&labelColor=%23FF2D20&color=%23FF2D20">
 <img alt="Static Badge" src="https://img.shields.io/badge/Inertia.js-%20?style=plastic&logo=Inertia&logoColor=FFFFFF&labelColor=%239553E9&color=%239553E9">
-<img alt="Static Badge" src="https://img.shields.io/badge/JavaScript-%20?style=plastic&logo=javascript&logoColor=%23F7DF1E&labelColor=%23ffffff&color=%23ffffff">
-<img alt="Static Badge" src="https://img.shields.io/badge/TypeScript-%20?style=plastic&logo=typescript&logoColor=%233178C6&labelColor=%23ffffff&color=%23ffffff">  
-<img alt="Static Badge" src="https://img.shields.io/badge/vite-v?style=plastic&logo=vite&logoColor=%23ffffff&labelColor=%23646CFF&color=%23646CFF">
 <img alt="Static Badge" src="https://img.shields.io/badge/React-%20?style=plastic&logo=react&logoColor=%23000000&labelColor=%2361DAFB&color=%2361DAFB">
-<img alt="Static Badge" src="https://img.shields.io/badge/-fotify?style=plastic&logo=fotify&label=fotify&labelColor=c1c1c1&color=c1c1c1">
+<img alt="Static Badge" src="https://img.shields.io/badge/TypeScript-%20?style=plastic&logo=typescript&logoColor=%233178C6&labelColor=%23ffffff&color=%23ffffff">
+<img alt="Static Badge" src="https://img.shields.io/badge/-fortify?style=plastic&logo=fortify&label=fortify&labelColor=c1c1c1&color=c1c1c1">
+</p>
 
+## プロジェクト概要
+- Laravel 12 + React/TypeScript + Inertia.js で構築した学習用フルスタックアプリ
+- WSL2 + Docker で Backend/Frontend を分離したマルチコンテナ構成
+- Todo 管理 + カレンダー表示機能を実装、SPA体験を学習
+※Todo 管理 + カレンダー表示機能を実装、SPA体験を学習
 
-## 概要  
-#### Laravel12で下記環境を構築しています。
-- HMR  
-- Vite(TypeScript)  
-- Inertia設定  
-- nodeコンテナ別作成  
+## 学習・検証目的
+- Laravel と React の最適な組み合わせ・データ受け渡し方法の理解  
+- TypeScript によるフロントエンド型安全性の確保  
+- サービス層（`app/Services`）での責務分離（SRP）の実践  
+※LaravelからReactへデータ受渡しはTodo一覧のみで、カレンダーはTodo表示＋詳細画面遷移までを対象
 
-#### [環境手順はこちら](https://github.com/Demo-YH/Document/blob/master/laravel12_react_v1.md)  
+## 主な機能
+- ユーザー認証（Laravel Fortify）
+- Todo CRUD機能
+- カレンダー表示（締切日グルーピング）
+- Inertia.js による SPA 遷移
+- マルチコンテナ環境での独立した Backend/Frontend 管理
 
-## 参考  
-#### [参考サイト:環境構築](https://qiita.com/daki/items/6a6a75a677c7bc583d38)  
-#### [参考サイト:React](https://reffect.co.jp/laravel/laravel_inertia_js_react#i-7)
+## 使用技術
+| カテゴリ | 使用技術 |
+| :--- | :--- |
+| **Backend** | Laravel 12, Fortify, PHP_CodeSniffer, Debugbar |
+| **Frontend** | React, TypeScript, Inertia.js, Vite, Tailwind CSS |
+| **Infrastructure** | Docker Compose (App / Node / MySQL / Nginx) |
+| **OS Environment** | WSL2 (Ubuntu / Alpine Linux) |
+| **Database** | MySQL 8.x |
 
-## 備考
-#### 個人学習目的なのでコメントもそれに付随したものとなっています。  
-#### 独学なので内容・動作の保証は不可、あくまで個人学習の範囲で試行錯誤したものとなっています。  
+## マルチコンテナ分離構成 (Separation of Concerns)
+各サービスの責務を分離したコンテナ管理を行っています。
+- **App Container (PHP-FPM/Alpine)**: ビジネスロジックおよびサーバーサイド処理を担当。
+- **Node Container (Vite)**: フロントエンドのビルドおよびホットリロードを担当。
+- **DB Container (MySQL)**: データの永続化を担当。
 
-## 所感  
-#### 変更をかけずに長期的に使える構成の検討は難しい
-#### 必要なファイルと書き換える構成はなんとなく理解した。
-#### 分けるものらしいけど、Larvelの中で共存しないとで辛い…
-#### 本番環境では使えないとか…
-#### 今回下記を初めて使用したコマンド少しだけ知識が増えた…今更だが便利！
-```
-php artisan tinker
-```
-#### ※今まで下記かlog直接見るを実施  
-#### ※特にvar_dumpの使用を推奨された↓  
-```
-\Log::debug($test);
-var_dump();
-dd();
-```
-#### 実務使用経験あり  
-```
-tail -f
+## 設計・実装の特徴
+- **サービス層での責務分離**  
+  → コントローラは入力受付とレスポンス返却に集中。テスト容易性と保守性向上  
+- **型安全性重視**  
+  → TypeScript + 型定義ファイルによりフロントエンドバグを抑制  
+- **再利用性の高い UI コンポーネント設計**  
+  → `resources/ts/Components` に汎用コンポーネントを配置  
+- **将来拡張可能なカレンダー設計**  
+  → 日付クリックで作成/編集機能を追加可能（現状未実装）
+
+## 主要ディレクトリ構成
+- **`app/Services/`** : ビジネスロジック集約（カレンダー生成・Todo操作）  
+- **`app/Actions/Fortify/`** : 認証ロジックカスタマイズ  
+- **`resources/ts/`** : React/TypeScript フロントエンド資産  
+  - `Components/`: 再利用可能UI  
+  - `Pages/`: Inertia.js ページビュー  
+  - `types/`: 型定義  
+- **`lang/ja/`** : 日本語化（バリデーション・認証エラーなど）
+
+## アーキテクチャ構成図
+
+このリポジトリは、Laravelを基盤としたモダンなフルスタック構成の実験場です。
+
+```mermaid
+graph LR
+    subgraph Client ["フロントエンド (Browser)"]
+        React["React + TypeScript"]
+        Vite["Vite (ビルドツール)"]
+    end
+
+    subgraph Bridge ["架け橋"]
+        Inertia["Inertia.js"]
+    end
+
+    subgraph Server ["バックエンド (Server)"]
+        Laravel["Laravel 12+"]
+        Fortify["Fortify (認証ロジック)"]
+    end
+
+    DB[(Database)]
+
+    React <--> Inertia
+    Inertia <--> Laravel
+    Laravel <--> Fortify
+    Laravel <--> DB
+    Vite -.-> React
 ```
 
-#### curlは存在は知っているが、コーディング中に使用初、実務では仕様調査の為に使用したのみ
-| Command | Description |
-| --- | --- |
-| curl http\://localhost:xxxx | SSRサーバーが応答するか確認 |
-| curl -X POST http\://localhost:xxxx/render -d '{"url":"/"}' | SSR出力を確認 |
-  
-#### サーバー設定でお世話になった方々
+## セットアップ手順
+
+### 1. インフラのビルドと起動
+```bash
+docker compose build
+docker compose up -d
 ```
-cat .env | grep VITE
-ss -ltnp | grep
-docker compose logs -f node
-php artisan inertia:check-ssr
+
+### 2. バックエンドの初期化
 ```
+docker compose exec app ash
+composer install
+php artisan migrate
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+```
+### 3. フロントエンドの起動
+```
+docker compose exec node sh
+npm install
+npm run dev
+``` 
+
+## 今後の改善予定
+
+- カレンダー UI の改善（セルクリックで Todo 作成/編集画面遷移）
+- Service 層のテスト拡充
+- UX向上（ドラッグ＆ドロップやモバイル対応）
